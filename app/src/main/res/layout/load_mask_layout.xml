@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/load_mark_bg"
+    android:orientation="vertical">
+
+
+    <TextView
+        android:id="@+id/load_textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:text="正在缓冲中,马上就好..." />
+
+    <ProgressBar
+        android:id="@+id/load_progressBar"
+        style="?android:attr/progressBarStyleLarge"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/load_textView"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="21dp" />
+</RelativeLayout>

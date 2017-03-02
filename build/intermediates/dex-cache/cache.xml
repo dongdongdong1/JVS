@@ -1,0 +1,383 @@
+<?xml version="1.0" encoding="utf-8"?>
+<items version="2" >
+
+    <item
+        is-multidex="false"
+        jar="D:\ASPr\KingVtalking\app\libs\SocialSDK_QQ_Full.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="24.0.3"
+        sha1="8ebec5387932befc5e6e70352df51c55d219220a">
+        <dex dex="D:\ASPr\KingVtalking\app\build\intermediates\pre-dexed\debug\SocialSDK_QQ_Full_fe88ad24040c85b23d7bf5503aacaf61931abf04.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="D:\ASPr\KingVtalking\app\libs\umeng_social_net.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="24.0.3"
+        sha1="7d183d7985c0d28f16486e7f0f8122cde13a1c9f">
+        <dex dex="D:\ASPr\KingVtalking\app\build\intermediates\pre-dexed\debug\umeng_social_net_40afdf2f0a95ca164573c2ca829e2116e8b49edd.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="D:\ASPr\KingVtalking\app\build\intermediates\exploded-aar\com.android.support\support-core-ui\24.2.1\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="24.0.3"
+        sha1="e7f3132168957eefc46229fc32c3bd464642b71e">
+        <dex dex="D:\ASPr\KingVtalking\app\build\intermediates\pre-dexed\debug\com.android.support-support-core-ui-24.2.1_f5c49fb323fa16a53b635164ff4967f923efba8f.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\Administrator\.gradle\caches\modules-2\files-2.1\com.squareup.okhttp3\okhttp\3.1.2\7052283359001bb108753cb0583a887d3bf94c82\okhttp-3.1.2.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="24.0.3"
+        sha1="7052283359001bb108753cb0583a887d3bf94c82">
+        <dex dex="D:\ASPr\KingVtalking\app\build\intermediates\pre-dexed\debug\okhttp-3.1.2_df8be8f3d92fa619ccf539d98de4049254089836.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="D:\ASPr\KingVtalking\app\build\intermediates\exploded-aar\com.android.support\support-core-utils\24.2.1\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="24.0.3"
+        sha1="9c4c3bc902450c39ed54de170db4fb12aea20a35">
+        <dex dex="D:\ASPr\KingVtalking\app\build\intermediates\pre-dexed\debug\com.android.support-support-core-utils-24.2.1_96ea1bb6e562752dd0394d46b5f8d98933a019d5.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="D:\ASPr\KingVtalking\app\libs\umeng_social_tool.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="24.0.3"
+        sha1="9e850ff89b00626dad1ed98590b663c64b674034">
+        <dex dex="D:\ASPr\KingVtalking\app\build\intermediates\pre-dexed\debug\umeng_social_tool_4bc9811b4a5f0d110640dd7ae55d45378d1a8a45.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="D:\ASPr\KingVtalking\app\libs\ormlite-android-4.48.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="24.0.3"
+        sha1="afa06f539a4026c10b247386312aa67404b80a16">
+        <dex dex="D:\ASPr\KingVtalking\app\build\intermediates\pre-dexed\debug\ormlite-android-4.48_97b73ab78ac82d775baace9cc7b36a48ccc2eae7.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="D:\ASPr\KingVtalking\app\libs\weiboSDKCore_3.1.4.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="24.0.3"
+        sha1="f3617ce51258bf3ec0fe2503e3c0a920040b1b53">
+        <dex dex="D:\ASPr\KingVtalking\app\build\intermediates\pre-dexed\debug\weiboSDKCore_3.1.4_9d889eb4a531a467f2ddc3201b0e607968003e76.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="D:\Users\GH\AppData\Local\Android\sdk2.2.2\extras\android\m2repository\com\android\support\support-annotations\24.2.1\support-annotations-24.2.1.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="24.0.3"
+        sha1="8de3aafecbdf98a61db6427f008f2d515bcd2544">
+        <dex dex="D:\ASPr\KingVtalking\app\build\intermediates\pre-dexed\debug\support-annotations-24.2.1_f718e9e7c68a63d91481ff91ca91f1644efe6279.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="D:\ASPr\KingVtalking\app\libs\umeng_social_shareboard.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="24.0.3"
+        sha1="7261b9972c16ee5c34c2a88309f702946dcd1a8f">
+        <dex dex="D:\ASPr\KingVtalking\app\build\intermediates\pre-dexed\debug\umeng_social_shareboard_6638c50f7cdeb38204333ba7ddedd7cda0bcd204.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="D:\ASPr\KingVtalking\app\build\intermediates\exploded-aar\com.android.support\support-media-compat\24.2.1\jars\libs\internal_impl-24.2.1.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="24.0.3"
+        sha1="fbf8da429efd5ad21e02e3e5ecaa1efc4167878d">
+        <dex dex="D:\ASPr\KingVtalking\app\build\intermediates\pre-dexed\debug\internal_impl-24.2.1_db6f9dcfd7abe630725182eaf0ae99493fa60e02.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\Administrator\.gradle\caches\modules-2\files-2.1\com.squareup.retrofit2\retrofit\2.0.0-beta4\739e00dea1f0ac04fdb9b6160d667e23cc50a791\retrofit-2.0.0-beta4.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="24.0.3"
+        sha1="739e00dea1f0ac04fdb9b6160d667e23cc50a791">
+        <dex dex="D:\ASPr\KingVtalking\app\build\intermediates\pre-dexed\debug\retrofit-2.0.0-beta4_ff5e801f6eef544a1408f5132c8f2c7b6c1a5980.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="D:\ASPr\KingVtalking\app\build\intermediates\exploded-aar\com.android.support\support-compat\24.2.1\jars\libs\internal_impl-24.2.1.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="24.0.3"
+        sha1="7e4389bd133359a2ff88623ff1e4ff93d6e6f780">
+        <dex dex="D:\ASPr\KingVtalking\app\build\intermediates\pre-dexed\debug\internal_impl-24.2.1_707b6fbf5141d235fed53294dca95de206312609.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="D:\ASPr\KingVtalking\app\build\intermediates\exploded-aar\com.android.support\support-core-ui\24.2.1\jars\libs\internal_impl-24.2.1.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="24.0.3"
+        sha1="867dad63c33388ff8c7644b236579355036d075f">
+        <dex dex="D:\ASPr\KingVtalking\app\build\intermediates\pre-dexed\debug\internal_impl-24.2.1_2a6df7c81f47bfe49ea4c4f99028e87fde923c42.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="D:\ASPr\KingVtalking\app\build\intermediates\exploded-aar\com.android.support\support-compat\24.2.1\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="24.0.3"
+        sha1="0ecb4b595fa0f0f8018a149ace3ea6525624f94e">
+        <dex dex="D:\ASPr\KingVtalking\app\build\intermediates\pre-dexed\debug\com.android.support-support-compat-24.2.1_8c4950663d3941c52c61a290ba524bb0060e6380.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="D:\ASPr\KingVtalking\app\build\intermediates\exploded-aar\com.android.support\support-fragment\24.2.1\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="24.0.3"
+        sha1="b9a1ac78ad7ef3abedc4a4b30cd92bcacb939d1f">
+        <dex dex="D:\ASPr\KingVtalking\app\build\intermediates\pre-dexed\debug\com.android.support-support-fragment-24.2.1_8754aabb08d38ad0816d3afd653d5155864368e6.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\Administrator\.gradle\caches\modules-2\files-2.1\com.squareup.retrofit2\adapter-rxjava\2.0.0-beta4\bd49baf667542c7d06f71e598bdee7fe57272013\adapter-rxjava-2.0.0-beta4.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="24.0.3"
+        sha1="bd49baf667542c7d06f71e598bdee7fe57272013">
+        <dex dex="D:\ASPr\KingVtalking\app\build\intermediates\pre-dexed\debug\adapter-rxjava-2.0.0-beta4_e23037635433fe189e1b58909ce389aa7d3d465e.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="D:\ASPr\KingVtalking\app\libs\jcore-android_v1.1.0.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="24.0.3"
+        sha1="c49fbb60c08a0d71decd2f092da4677fb7872f04">
+        <dex dex="D:\ASPr\KingVtalking\app\build\intermediates\pre-dexed\debug\jcore-android_v1.1.0_b97025288211ff0d187a99b17d53d406b3858558.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\Administrator\.gradle\caches\modules-2\files-2.1\com.github.bumptech.glide\glide\3.7.0\9e9eeaf9948ee4d6c3ab354e8dc14368f16994a4\glide-3.7.0.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="24.0.3"
+        sha1="9e9eeaf9948ee4d6c3ab354e8dc14368f16994a4">
+        <dex dex="D:\ASPr\KingVtalking\app\build\intermediates\pre-dexed\debug\glide-3.7.0_1f3ddf859a86296da03fddcf50d19f29d652df81.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="D:\ASPr\KingVtalking\app\libs\cordova.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="24.0.3"
+        sha1="8d67778e1c9646569b7dd04b6a396635bdc20a2c">
+        <dex dex="D:\ASPr\KingVtalking\app\build\intermediates\pre-dexed\debug\cordova_ba9e9a91abd42890321b2943ea7e573ccf6acfcf.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="D:\ASPr\KingVtalking\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-appindexing\8.4.0\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="24.0.3"
+        sha1="65d086ee9daaf87b5af62ad24471edafa433354c">
+        <dex dex="D:\ASPr\KingVtalking\app\build\intermediates\pre-dexed\debug\com.google.android.gms-play-services-appindexing-8.4.0_9d482ace570737b8b868cda13e8d8c85c029b12f.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="D:\ASPr\KingVtalking\app\libs\ormlite-core-4.48.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="24.0.3"
+        sha1="e579bd2905d0399af5029aaaf9817d5fa0ca88a5">
+        <dex dex="D:\ASPr\KingVtalking\app\build\intermediates\pre-dexed\debug\ormlite-core-4.48_42c8121be6446a3dd93dd66bede9cecec82bd91b.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="D:\ASPr\KingVtalking\app\libs\libammsdk.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="24.0.3"
+        sha1="11b09244aedaa51bfd09269637be7c32c60da314">
+        <dex dex="D:\ASPr\KingVtalking\app\build\intermediates\pre-dexed\debug\libammsdk_5a0e0d5604f041cdd0a6cb39aac2e5b884c1f14e.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="D:\ASPr\KingVtalking\app\build\intermediates\exploded-aar\com.android.support\support-fragment\24.2.1\jars\libs\internal_impl-24.2.1.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="24.0.3"
+        sha1="5f64d657e838e8375135c0f6057a7ff8fab6a50e">
+        <dex dex="D:\ASPr\KingVtalking\app\build\intermediates\pre-dexed\debug\internal_impl-24.2.1_2f556ee3b49d41cff1616d862cabf0f5aac6d242.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="D:\ASPr\KingVtalking\app\build\intermediates\exploded-aar\io.reactivex\rxandroid\1.0.1\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="24.0.3"
+        sha1="aa81bfe8c5cc88c2472ca936ae71f0c3dd1766df">
+        <dex dex="D:\ASPr\KingVtalking\app\build\intermediates\pre-dexed\debug\io.reactivex-rxandroid-1.0.1_17c52faf6ef5cc6aac3dd640e0c921e633acc2dc.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="D:\ASPr\KingVtalking\app\libs\SocialSDK_WeiXin_Full.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="24.0.3"
+        sha1="fd84f4511be6d9e8dc5d5898651a8330aa684722">
+        <dex dex="D:\ASPr\KingVtalking\app\build\intermediates\pre-dexed\debug\SocialSDK_WeiXin_Full_5a3253d8bde1136ca3649eb7b2285271084c5a8f.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\Administrator\.gradle\caches\modules-2\files-2.1\com.squareup.retrofit2\converter-gson\2.0.0-beta4\de5935a367ba5e343e9df786ac8fc0c7d52b5f0c\converter-gson-2.0.0-beta4.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="24.0.3"
+        sha1="de5935a367ba5e343e9df786ac8fc0c7d52b5f0c">
+        <dex dex="D:\ASPr\KingVtalking\app\build\intermediates\pre-dexed\debug\converter-gson-2.0.0-beta4_c6e97f806b29334717938c473af852cff524d6ae.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="D:\ASPr\KingVtalking\app\libs\umeng_shareboard_widget.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="24.0.3"
+        sha1="f16de3f9ededdf9f65f872bd4fcd3ff5db23f6f6">
+        <dex dex="D:\ASPr\KingVtalking\app\build\intermediates\pre-dexed\debug\umeng_shareboard_widget_9c68ef8a16893f6d0c93ca4137d56a5b9e51d8a7.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="D:\ASPr\KingVtalking\app\build\intermediates\exploded-aar\com.android.support\support-v4\24.2.1\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="24.0.3"
+        sha1="d7c42c80f6509b9ea4db28ca7859ffae08ec5741">
+        <dex dex="D:\ASPr\KingVtalking\app\build\intermediates\pre-dexed\debug\com.android.support-support-v4-24.2.1_7d601bdac98aa2356549d97775679f22ee881d02.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\Administrator\.gradle\caches\modules-2\files-2.1\com.google.code.gson\gson\2.8.0\c4ba5371a29ac9b2ad6129b1d39ea38750043eff\gson-2.8.0.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="24.0.3"
+        sha1="c4ba5371a29ac9b2ad6129b1d39ea38750043eff">
+        <dex dex="D:\ASPr\KingVtalking\app\build\intermediates\pre-dexed\debug\gson-2.8.0_eca52502deb48db964b5e6d39d16c5eaa7bb0998.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\Administrator\.gradle\caches\modules-2\files-2.1\io.reactivex\rxjava\1.1.0\748f0546d5c3c27f1aef07270ffea0c45f0c42a4\rxjava-1.1.0.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="24.0.3"
+        sha1="748f0546d5c3c27f1aef07270ffea0c45f0c42a4">
+        <dex dex="D:\ASPr\KingVtalking\app\build\intermediates\pre-dexed\debug\rxjava-1.1.0_8ad53718875d263efc9f5dad95fc3130e7736adc.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="D:\ASPr\KingVtalking\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-basement\8.4.0\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="24.0.3"
+        sha1="8e673cdfadd8f2d98fdb2fda2285c30f6e449782">
+        <dex dex="D:\ASPr\KingVtalking\app\build\intermediates\pre-dexed\debug\com.google.android.gms-play-services-basement-8.4.0_63af3c7b30e724da2125d101a08c882ab4c5d9f6.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="D:\ASPr\KingVtalking\app\libs\jpush-android_v3.0.1.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="24.0.3"
+        sha1="8e0e2966df7e5f6062849be632a5c7d62d3a38fa">
+        <dex dex="D:\ASPr\KingVtalking\app\build\intermediates\pre-dexed\debug\jpush-android_v3.0.1_cbe2195104e4d6ad5ec92b8531a741b03dbf22b9.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="D:\ASPr\KingVtalking\app\libs\umeng_social_api.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="24.0.3"
+        sha1="8cb740080f86fd7800527bb853ac6f68c452053f">
+        <dex dex="D:\ASPr\KingVtalking\app\build\intermediates\pre-dexed\debug\umeng_social_api_c92fdf80043a6c23e44ff53cd95a473cfb0684ad.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="D:\ASPr\KingVtalking\app\libs\open_sdk_r5756_lite.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="24.0.3"
+        sha1="06379788d59fda28f99848b542d55c94f48322a9">
+        <dex dex="D:\ASPr\KingVtalking\app\build\intermediates\pre-dexed\debug\open_sdk_r5756_lite_a9b1f7eb1ee0e23852d87f1d34c05a3ad9eed1f6.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\Administrator\.gradle\caches\modules-2\files-2.1\com.squareup.okio\okio\1.6.0\98476622f10715998eacf9240d6b479f12c66143\okio-1.6.0.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="24.0.3"
+        sha1="98476622f10715998eacf9240d6b479f12c66143">
+        <dex dex="D:\ASPr\KingVtalking\app\build\intermediates\pre-dexed\debug\okio-1.6.0_c410569bd3ae660f2a7eceb3af69efc833b46b70.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\Administrator\.gradle\caches\modules-2\files-2.1\com.squareup.okhttp3\logging-interceptor\3.1.2\a1b4b8e4dc5f7bfa9186e79f9e267c1539a847b0\logging-interceptor-3.1.2.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="24.0.3"
+        sha1="a1b4b8e4dc5f7bfa9186e79f9e267c1539a847b0">
+        <dex dex="D:\ASPr\KingVtalking\app\build\intermediates\pre-dexed\debug\logging-interceptor-3.1.2_30b270bb378363c5ded28421fff9202428fed071.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="D:\ASPr\KingVtalking\app\libs\mta-sdk-1.6.2.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="24.0.3"
+        sha1="c184c69f43b1fe46390f7123717c65bd844bccb6">
+        <dex dex="D:\ASPr\KingVtalking\app\build\intermediates\pre-dexed\debug\mta-sdk-1.6.2_2fc29943bf94a4bb7debf302deefb58b91ff6403.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="D:\ASPr\KingVtalking\app\build\intermediates\exploded-aar\com.android.support\support-core-utils\24.2.1\jars\libs\internal_impl-24.2.1.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="24.0.3"
+        sha1="935a969265b2a166b2d20415423f5f6e90fe16e0">
+        <dex dex="D:\ASPr\KingVtalking\app\build\intermediates\pre-dexed\debug\internal_impl-24.2.1_f9774b88e4d73539168da0ad8456deb55cecdb80.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="D:\ASPr\KingVtalking\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-base\8.4.0\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="24.0.3"
+        sha1="fef2b3e4b6b1b0e5fe7b69fa137a5fa55a3182ab">
+        <dex dex="D:\ASPr\KingVtalking\app\build\intermediates\pre-dexed\debug\com.google.android.gms-play-services-base-8.4.0_4ff7e79663ad48de45e8a4a994f31cb399f7b50b.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="D:\ASPr\KingVtalking\app\build\intermediates\exploded-aar\com.android.support\support-media-compat\24.2.1\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="24.0.3"
+        sha1="09b462bbcb77650284bd6614f1a32f360ef369f8">
+        <dex dex="D:\ASPr\KingVtalking\app\build\intermediates\pre-dexed\debug\com.android.support-support-media-compat-24.2.1_043c844a3ad81d614bc6c384ac92529e983350a9.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="D:\ASPr\KingVtalking\app\libs\SocialSDK_Sina_Full.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="24.0.3"
+        sha1="9539a4cb0d198b74d222ce90ae7406979bd3fc8a">
+        <dex dex="D:\ASPr\KingVtalking\app\build\intermediates\pre-dexed\debug\SocialSDK_Sina_Full_4b90e4cfc28705e05e0c0bac5d48c2d8d2ef0b2e.jar" />
+    </item>
+
+</items>

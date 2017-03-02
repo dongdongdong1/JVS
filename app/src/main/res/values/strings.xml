@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">金V说</string>
+    <string name="pay_suc">微信支付已成功</string>
+    <string name="pay_cancel">微信支付已取消</string>
+    <string name="pay_deny">授权被拒绝</string>
+    <string name="pay_unknown">微信支付发送失败</string>
+</resources>
