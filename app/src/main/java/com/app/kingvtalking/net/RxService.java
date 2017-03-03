@@ -34,6 +34,12 @@ import retrofit2.converter.gson.GsonConverterFactory;
  */
 
 public class RxService {
+
+        private static String url="http://test-biz.jvtalking.com/";
+
+//    private static String url="http://biz.jvtalking.com/";
+
+
     private static HashSet<String> cookies   = new HashSet<>();
     private static final int TIMEOUT_READ = 20;
     private static final int TIMEOUT_CONNECTION = 10;
@@ -71,9 +77,7 @@ public class RxService {
         }
     };
 
-//    private static String url="http://test-biz.jvtalking.com/";
 
-    private static String url="http://biz.jvtalking.com/";
 
     /**
      * 设缓存有效期为两天

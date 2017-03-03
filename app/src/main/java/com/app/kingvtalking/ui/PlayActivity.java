@@ -351,10 +351,16 @@ public class PlayActivity extends BaseActivity {
                     }
                     break;
                 case 2: //分享1
-                    if (!ShareUtil.isShowingDialog())
-                    if (info != null) {
-                        ShareUtil.shareCommonDialog(PlayActivity.this, wxApi, info.getShare_path(), info.getShare_title(), info.getShare_detail(), info.getShare_img());
-                    }
+//                    if (info == null) {
+//                        LogUtil.e("info == null");
+//                    }
+//                    LogUtil.e("--------分享1");
+//                    LogUtil.e("info="+info.toString());
+//                    if (!ShareUtil.isShowingDialog())
+//                    if (info != null) {
+//                        ShareUtil.shareCommonDialog(PlayActivity.this, wxApi, info.getShare_path(), info.getShare_title(), info.getShare_detail(), info.getShare_img());
+//                    }
+                    handler.sendEmptyMessage(5);
                     break;
                 case 3:
                     btnPlay.setBackgroundResource(R.drawable.iv_have_play);
@@ -405,6 +411,7 @@ public class PlayActivity extends BaseActivity {
                     break;
                 case 5:
                     //分享2
+                    LogUtil.e("分享----------");
                     if (shareInfo == null) {
                         ToastUtil.showShortToast(PlayActivity.this, "无可分享的内容");
                         return;
@@ -539,7 +546,9 @@ public class PlayActivity extends BaseActivity {
         filter.addAction(Constants.Play_All_Compelte);
         filter.addAction(Constants.SeekBar_Complete);
         filter.addAction(Constants.Have_Phone);
+        filter.addAction(Constants.In_The_List);
         registerReceiver(reciver, filter);
+
     }
 
     @Override
@@ -771,7 +780,6 @@ public class PlayActivity extends BaseActivity {
         }
     }
 
-
     public void onTabClicked(View view) {
         switch (view.getId()) {
             case R.id.iv_back:
@@ -833,11 +841,7 @@ public class PlayActivity extends BaseActivity {
                 break;
             case R.id.iv_share:
                 LogUtil.e("点击了分享。。。iv_share。");
-                if (tvTitle.getText().toString().equals("内容详情")) {
-                    handler.sendEmptyMessage(2);
-                } else {
-                    handler.sendEmptyMessage(5);
-                }
+                handler.sendEmptyMessage(5);
                 break;
             case R.id.btn_play:
                 String id = SharePrefrenUtil.getMp3Detail();
@@ -923,8 +927,6 @@ public class PlayActivity extends BaseActivity {
             i.setAction(Constants.Pause_Music);
             sendBroadcast(i);
             handler.sendEmptyMessage(7);
-
-
         }
 
         @JavascriptInterface
@@ -984,13 +986,19 @@ public class PlayActivity extends BaseActivity {
 
         @JavascriptInterface
         public void toShare() {
+//            LogUtil.e("toShare");
+//            handler.sendEmptyMessage(2);
 
-            handler.sendEmptyMessage(2);
+            if (tvTitle.getText().toString().equals("内容详情")) {
+                handler.sendEmptyMessage(2);
+            } else {
+                handler.sendEmptyMessage(5);
+            }
         }
 
         @JavascriptInterface
         public void shareInfo(String js) {//分享内容
-           // LogUtil.e("分享内容=" + js);
+            LogUtil.e("分享内容=" + js);
             json = js;
             AppApplication.pool.execute(getShare);
         }
@@ -1075,7 +1083,6 @@ public class PlayActivity extends BaseActivity {
             showBotBar(js);
         }
 
-
         //=================================新加的 播放接口======================
 
         //首页雷达-播放
@@ -1089,14 +1096,16 @@ public class PlayActivity extends BaseActivity {
         @JavascriptInterface
         public void audioToPlay() {
             LogUtil.e("PlayAct-播放==");
-            playOrPause();
+            //playOrPause();
+            play();
         }
 
         //首页雷达-暂停
         @JavascriptInterface
         public void audioToPause() {
             LogUtil.e("PlayAct-暂停==");
-            playOrPause();
+           // playOrPause();
+            pause();
         }
 
         @JavascriptInterface     //表示页面渲染完毕了-暂时不用
@@ -1109,13 +1118,14 @@ public class PlayActivity extends BaseActivity {
         @JavascriptInterface
         public void initPlayUrl(String js) {//当前详情页 的内容信息
             LogUtil.e("PlayAct-返回详情内容==" + js);
-           // final Details details = gson.fromJson(js, Details.class);
+          Details details = gson.fromJson(js, Details.class);
+          tempPlayList.clear();
+            tempPlayList.add(details);
             SharePrefrenUtil.setInitPlayJson(js);
             Intent intent = new Intent();
             intent.setAction(Constants.onInitPlayUrl);
             sendBroadcast(intent);
         }
-
 
         @JavascriptInterface  //滚动监听
         public void scrollDirection(String js) {//当前详情页 的内容信息
@@ -1150,20 +1160,52 @@ public class PlayActivity extends BaseActivity {
             @Override
             public void run() {
                 Intent intent = new Intent();
-                if (MainActivity.player.isPlaying()) {
-                    intent.setAction(Constants.Pause_Music);
-                    sendBroadcast(intent);
-                    ivPlay.setBackgroundResource(R.drawable.iv_play);
-                } else {
-                    intent.setAction(Constants.Play_Music);
-                    sendBroadcast(intent);
-                    ivPlay.setBackgroundResource(R.drawable.iv_stop);
-                }
+//                if (MainActivity.player.isPlaying()) {
+//                    intent.setAction(Constants.Pause_Music);
+//                    sendBroadcast(intent);
+//                    ivPlay.setBackgroundResource(R.drawable.iv_play);
+//                } else {
+//                    intent.setAction(Constants.Play_Music);
+//                    sendBroadcast(intent);
+//                    ivPlay.setBackgroundResource(R.drawable.iv_stop);
+//                }
+
+                intent.setAction(Constants.Play_Music);
+                sendBroadcast(intent);
+                ivPlay.setBackgroundResource(R.drawable.iv_stop);
 
             }
         });
 
     }
+
+    public void play() {//控制栏播放按钮控制
+        runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                Intent intent = new Intent();
+                intent.setAction(Constants.Play_Music);
+                sendBroadcast(intent);
+                ivPlay.setBackgroundResource(R.drawable.iv_stop);
+                //有问题 越界了
+               // tvContent.setText(""+tempPlayList.get(playIndex).getPlayTitle());
+            }
+        });
+        setH5PlayState();
+    }
+    public void pause() {//控制栏播放按钮控制
+        runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                Intent intent = new Intent();
+                    intent.setAction(Constants.Pause_Music);
+                    sendBroadcast(intent);
+                    ivPlay.setBackgroundResource(R.drawable.iv_play);
+            }
+        });
+        setH5PlayState();
+    }
+
 
 
     private void setH5PlayState() {
@@ -1174,7 +1216,7 @@ public class PlayActivity extends BaseActivity {
                 new Handler().postDelayed(new Runnable() {//跟播放器保持一致
                     @Override
                     public void run() {
-                        if (tempPlayList!=null &&tempPlayList.size()>0) {
+                        if (tempPlayList!=null &&tempPlayList.size()>0&&playIndex<tempPlayList.size()) {
                             String activeItemId = "" + tempPlayList.get(playIndex).getActiveItemId();
                             String currPlayType=tempPlayList.get(playIndex).getPlayType();
                             LogUtil.e("1currPlayType="+currPlayType);
@@ -1198,7 +1240,7 @@ public class PlayActivity extends BaseActivity {
                             LogUtil.e("setH5PlayState xxx");
                         }
                     }
-                },1000);
+                },300);
 
             }
         });
@@ -1287,6 +1329,7 @@ public class PlayActivity extends BaseActivity {
         @Override
         public void run() {
             shareInfo = gson.fromJson(json, DetailInfo.class);
+
         }
     };
     Runnable runnable = new Runnable() {
@@ -1399,6 +1442,7 @@ public class PlayActivity extends BaseActivity {
                 isHavePhone = true;
                 webView.loadUrl("javascript:setAudioStatus('Pause')");
                 ivPlay.setBackgroundResource(R.drawable.iv_play);
+            }else if (action.equals(Constants.In_The_List)) {
 
             }
         }
@@ -1415,8 +1459,6 @@ public class PlayActivity extends BaseActivity {
             } else {
                 tvContent.setText("" + title);
             }
-        } else {
-
         }
     }
 

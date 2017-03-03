@@ -222,7 +222,7 @@ public class MainActivity extends BaseActivity<Loginpresenter, LoginModel> imple
                     LogUtil.e("继续播放--");
                     player.start();
                     btnPlay.setBackgroundResource(R.drawable.iv_have_play);
-                    setAnim();
+                     startAnim();
                     break;
                 case 5:
 //                    playFlag = "0";
@@ -392,17 +392,23 @@ public class MainActivity extends BaseActivity<Loginpresenter, LoginModel> imple
 //                    boolean check = req.checkArgs();
 //                    wxApi.sendReq(req);
 
+                    if (wxPayBean != null) {
+                        //LogUtil.e("支付的实体="+wxPayBean.toString());
+                        req.appId = wxPayBean.getAppid();
+                        req.partnerId = wxPayBean.getPartnerid();
+                        req.prepayId = wxPayBean.getPrepayid();
+                        req.packageValue = wxPayBean.getPackageX();
+                        req.nonceStr = wxPayBean.getNoncestr();
+                        req.timeStamp = wxPayBean.getTimestamp();
+                        req.sign = wxPayBean.getSign();
+                        boolean check = req.checkArgs();
+                        wxApi.sendReq(req);
+                    }
+//                    else {
+//                        ToastUtil.showShortToast(MainActivity.this,"无可支付的订单信息");
+//                    }
 
-                    LogUtil.e("支付的实体="+wxPayBean.toString());
-                    req.appId = wxPayBean.getAppid();
-                    req.partnerId = wxPayBean.getPartnerid();
-                    req.prepayId = wxPayBean.getPrepayid();
-                    req.packageValue = wxPayBean.getPackageX();
-                    req.nonceStr = wxPayBean.getNoncestr();
-                    req.timeStamp = wxPayBean.getTimestamp();
-                    req.sign = wxPayBean.getSign();
-                    boolean check = req.checkArgs();
-                    wxApi.sendReq(req);
+
 
 
                     break;
@@ -428,7 +434,7 @@ public class MainActivity extends BaseActivity<Loginpresenter, LoginModel> imple
                     }
                     btnPlay.setBackgroundResource(R.drawable.big_play);
                     if (anim != null) {
-                        btnPlay.clearAnimation();
+                      //  btnPlay.clearAnimation();
                     }
                     break;
                 case 17:
@@ -804,19 +810,15 @@ public class MainActivity extends BaseActivity<Loginpresenter, LoginModel> imple
             fbttom.setVisibility(View.VISIBLE);
             btnPlay.setVisibility(View.VISIBLE);
             flPaly.setVisibility(View.GONE);
-            if (player.isPlaying()) {
-                setAnim();
-            }
-        } else {
-            btnPlay.setVisibility(View.GONE);
-            fbttom.setVisibility(View.GONE);
-            flPaly.setVisibility(View.GONE);
-
-            if (anim != null) {
-                btnPlay.setVisibility(View.GONE);
-                btnPlay.clearAnimation();
-            }
+            LogUtil.e("========11");
         }
+//        else {
+//            btnPlay.setVisibility(View.GONE);
+//            fbttom.setVisibility(View.GONE);
+//            flPaly.setVisibility(View.GONE);
+//
+//            LogUtil.e("========22");
+//        }
 
 
     }
@@ -971,6 +973,7 @@ public class MainActivity extends BaseActivity<Loginpresenter, LoginModel> imple
         //首页雷达-播放
         @JavascriptInterface
         public void initPlayList(String json) {
+            LogUtil.e("initPlayList");
             currPlayJson = json;
             isDanBo = false;
             ischange = true;//可以切换歌曲
@@ -1014,48 +1017,18 @@ public class MainActivity extends BaseActivity<Loginpresenter, LoginModel> imple
         //首页雷达-播放
         @JavascriptInterface
         public void audioToPlay() {
-            LogUtil.e("audioToPlay");
-            ischange = true;
-            if (isDanBo) {
-                if (tempPlayList != null && tempPlayList.size() > 0) {
-                    if (isPlaying) {
-                        LogUtil.e("单播-播放或暂停  playIndex=" + playIndex);
-                        playOrPause();
-                    } else {
-                        ischange = true;
-                        isPlaying = true;
-                        LogUtil.e("单播-重新开始" + tempPlayList.size() + "    playIndex=" + playIndex);
-                        starMusic(tempPlayList.get(playIndex).getPlayUrl());  //重新播放
-                    }
-                } else {
-                    LogUtil.e("雷达-未播放");
-                }
-            } else {
-
-                LogUtil.e("雷达-列表播放  playIndex=" + playIndex);
-                if (tempPlayList != null && tempPlayList.size() > 0) {
-                    if (isPlaying) {
-                        playOrPause();
-                    } else {
-                        ischange = true;//切换中...
-                        isPlaying = true;
-                        starMusic(tempPlayList.get(playIndex).getPlayUrl());  //重新播放
-                    }
-                } else {
-                    LogUtil.e("雷达-未播放");
-                }
-
-            }
+            setAudioToPlay();
 
         }
 
         //首页雷达-暂停
         @JavascriptInterface
         public void audioToPause() {
-            LogUtil.e("播放-暂停");
+            LogUtil.e("audioToPause");
             if (player.isPlaying()) {
                 player.pause();
                 setUIPlayState();
+                LogUtil.e("---1");
                 setH5PlayState();
             }
         }
@@ -1069,61 +1042,7 @@ public class MainActivity extends BaseActivity<Loginpresenter, LoginModel> imple
 
         @JavascriptInterface
         public void initPlayUrl(String js) {//当前详情页 的内容信息 -单个播放用
-            isDanBo = true;
-            LogUtil.e("initPlayUrl=当前单个音频的信息==" + js);
-            currPlayJson = js;
-            details = gson.fromJson(js, Details.class);
-            if (details != null) {
-                prePlayId = details.getActiveItemId();
-                runOnUiThread(new Runnable() {
-                    @Override
-                    public void run() {
-                        tvContent.setText("" + details.getPlayTitle());//设置播放的标题
-                    }
-                });
-                //备份
-//                LogUtil.e("currPlayId=" + currPlayId + "    -prePlayId=" + prePlayId);
-//                if (prePlayId == currPlayId) {//id相等
-//                    LogUtil.e("id相等 不处理接着播放");
-//                    isPlaying = true;
-//                    //不处理接着播放
-//                } else {//id不相等
-//                    playIndex = 0;
-//                    LogUtil.e("id不相等 重新播放");
-//                    currPlayId = prePlayId;
-//                    tempPlayList.clear();
-//                    tempPlayList.add(details);
-//                    isPlaying = false;
-//
-//                }
-
-
-                LogUtil.e("之前的Id=" + tempPlayList.get(playIndex).getActiveItemId() + "    -现在的prePlayId=" + prePlayId);
-                if (prePlayId == tempPlayList.get(playIndex).getActiveItemId()) {//id相等
-                    LogUtil.e("id相等 不处理接着播放");
-                    isPlaying = true;
-                    //不处理接着播放
-                } else {//id不相等
-                    //id不相等 ,再判断 id在不在列表中
-                    //在：playIndex=id所在的下表 ，isDanBo = false,ischange = true，isPlaying=false；
-                    // 不在: 执行上面的代码
-                    ischange = true;
-                    isPlaying = false;
-                    if (isInHomeList()) {
-                        playIndex = tempIndex;
-                        LogUtil.e("在列表中 playIndex=" + playIndex);
-                        isDanBo = false;
-                    } else {
-                        LogUtil.e("不在列表中");
-                        playIndex = 0;
-                        LogUtil.e("id不相等 重新播放");
-                        tempPlayList.clear();
-                        tempPlayList.add(details);
-                    }
-                }
-            } else {
-                LogUtil.e("单个音频获取失败");
-            }
+            initPlayUrlData(js);
 
         }
 
@@ -1262,21 +1181,31 @@ public class MainActivity extends BaseActivity<Loginpresenter, LoginModel> imple
     };
 
 
-    //低栏圆形按钮 开始动画
-    private void setAnim() {
+    //低栏圆形按钮 停止动画
+    private void stopAnim(){
         runOnUiThread(new Runnable() {
             @Override
             public void run() {
-                if ("首页".equals(currTitle) || "订阅".equals(currTitle) || "发现".equals(currTitle) || "我的".equals(currTitle)) {
-                    if (player.isPlaying()) {
-                        btnPlay.setVisibility(View.VISIBLE);
-                        btnPlay.setBackgroundResource(R.drawable.iv_have_play);
-                        anim = AnimationUtils.loadAnimation(MainActivity.this, R.anim.anim_rotate);
-                        LinearInterpolator lin = new LinearInterpolator();
-                        anim.setInterpolator(lin);
-                        anim.setDuration(4000);
-                        btnPlay.startAnimation(anim);
-                    }
+                if (anim != null) {
+                    btnPlay.clearAnimation();
+                }
+                btnPlay.setBackgroundResource(R.drawable.iv_have_play);
+            }
+        });
+    }
+    //低栏圆形按钮 开始动画
+    private void startAnim() {
+        runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                if (player.isPlaying()) {
+                    btnPlay.setVisibility(View.VISIBLE);
+                    btnPlay.setBackgroundResource(R.drawable.iv_have_play);
+                    anim = AnimationUtils.loadAnimation(MainActivity.this, R.anim.anim_rotate);
+                    LinearInterpolator lin = new LinearInterpolator();
+                    anim.setInterpolator(lin);
+                    anim.setDuration(4000);
+                    btnPlay.startAnimation(anim);
                 }
             }
         });
@@ -1429,10 +1358,12 @@ public class MainActivity extends BaseActivity<Loginpresenter, LoginModel> imple
             //暂时放这里
             if ("首页".equals(currTitle)) {
                 btnPlay.setBackgroundResource(R.drawable.iv_have_play);
-                setAnim();
+                 startAnim();
             }
+            LogUtil.e("---2");
             setUIPlayState();
             setH5PlayState();
+
             handler.postDelayed(runnable, 1000);//开启循环发送广播
 
         }
@@ -1486,8 +1417,10 @@ public class MainActivity extends BaseActivity<Loginpresenter, LoginModel> imple
             Intent intent = new Intent();
             intent.setAction(Constants.Play_Compelte);
             sendBroadcast(intent);
+
         } else {
             LogUtil.e("全部播放完毕 playIndex= " + playIndex);
+            LogUtil.e("---3");
             setUIPlayState();
             setH5PlayState();
             //全部播放完毕
@@ -1516,46 +1449,42 @@ public class MainActivity extends BaseActivity<Loginpresenter, LoginModel> imple
 
     //播放停止的时候用
     private void setUIPlayState() {
-        if ("首页".equals(currTitle) || "订阅".equals(currTitle)) {
-            runOnUiThread(new Runnable() {
-                @Override
-                public void run() {
-                    LogUtil.e(currTitle + "=更新播放按钮状态");
-                    LogUtil.e("是否播放中="+player.isPlaying());
-                    if (player.isPlaying()) {
-                        setAnim();
-                    } else {
-                        if (anim != null) {
-                            btnPlay.clearAnimation();
-                        }
-                        btnPlay.setBackgroundResource(R.drawable.iv_have_play);
-                    }
+        LogUtil.d("setUIPlayState");
+        runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                LogUtil.e(currTitle + "=更新播放按钮状态");
+                LogUtil.e("是否播放中="+player.isPlaying());
+                if (player.isPlaying()) {
+                    startAnim();
+                } else {
+                    stopAnim();
                 }
-            });
-        } else {
-            runOnUiThread(new Runnable() {
-                @Override
-                public void run() {
-                    LogUtil.e(currTitle + "=更新播放按钮状态");
-                    if (player.isPlaying()) {
-                        LogUtil.e("----aaa");
-                        ivPlay.setBackgroundResource(R.drawable.iv_stop);
-                    } else {
-                        LogUtil.e("----bbb");
-                        ivPlay.setBackgroundResource(R.drawable.iv_play);
-                    }
-                    //LogUtil.e("-----"+tempPlayList.get(playIndex).getPlayTitle());
-                    if (playIndex < tempPlayList.size()) {
-                        tvContent.setText("" + tempPlayList.get(playIndex).getPlayTitle());
-                    }
+            }
+        });
 
-
+        runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                LogUtil.e(currTitle + "=更新播放按钮状态");
+                if (player.isPlaying()) {
+                    ivPlay.setBackgroundResource(R.drawable.iv_stop);
+                } else {
+                    ivPlay.setBackgroundResource(R.drawable.iv_play);
                 }
-            });
-        }
-
+                if (playIndex < tempPlayList.size()) {
+                    tvContent.setText("" + tempPlayList.get(playIndex).getPlayTitle());
+                }
+            }
+        });
 
     }
+
+
+
+
+
+
 
     //播放出错处理
     public void playError() {
@@ -1592,7 +1521,6 @@ public class MainActivity extends BaseActivity<Loginpresenter, LoginModel> imple
                     }else {
                         activeItemId = "" + tempPlayList.get(0).getActiveItemId();
                     }
-
                     if ("首页".equals(currTitle)) {
                         String currPlayType = tempPlayList.get(playIndex).getPlayType();
                         if ("homeRadar".equals(currPlayType) || "radar".equals(currPlayType)) {
@@ -1615,6 +1543,11 @@ public class MainActivity extends BaseActivity<Loginpresenter, LoginModel> imple
                         String currPlayType = tempPlayList.get(playIndex).getPlayType();
                         changeH5PlayState(activeItemId, currPlayType);
                     }
+                }else {
+                    LeiDaCallH5 lei = new LeiDaCallH5("changeAudioStatus", "", "", "Pause");
+                    LogUtil.e("lei=="+lei.toString());
+                    String json = gson.toJson(lei);
+                    wv.loadUrl("javascript:appCallH5Fn(" + json + ")");
                 }
 
             }
@@ -1704,6 +1637,7 @@ public class MainActivity extends BaseActivity<Loginpresenter, LoginModel> imple
                     player.reset();
                     player.setDataSource(url);
                     player.prepare();
+
                 } catch (Exception e) {
                     //e.printStackTrace();
                     //此处会报个错,对程序无影响
@@ -1712,6 +1646,8 @@ public class MainActivity extends BaseActivity<Loginpresenter, LoginModel> imple
             }
         }).start();
     }
+
+
 
     //播放暂停控制
     public void playOrPause() {
@@ -1725,9 +1661,10 @@ public class MainActivity extends BaseActivity<Loginpresenter, LoginModel> imple
                 LogUtil.e("播放继续");
                 player.start();
                 handler.postDelayed(runnable, 1000);
-                setAnim();
+
             }
         }
+        LogUtil.e("---5");
         setUIPlayState();
         setH5PlayState();
     }
@@ -1743,69 +1680,125 @@ public class MainActivity extends BaseActivity<Loginpresenter, LoginModel> imple
         }
 
         if (anim != null) {
-            btnPlay.clearAnimation();
+           // btnPlay.clearAnimation();
+        }
+
+    }
+    //setAudioToPlay
+    public void  setAudioToPlay(){
+        LogUtil.e("audioToPlay");
+        ischange = true;
+        if (isDanBo) {
+            if (tempPlayList != null && tempPlayList.size() > 0) {
+                if (isPlaying) {
+                    LogUtil.e("单播-播放或暂停  playIndex=" + playIndex);
+                    playOrPause();
+                } else {
+                    ischange = true;
+                    isPlaying = true;
+                    LogUtil.e("单播-重新开始" + tempPlayList.size() + "    playIndex=" + playIndex);
+                    starMusic(tempPlayList.get(playIndex).getPlayUrl());  //重新播放
+                }
+            } else {
+                LogUtil.e("雷达-未播放");
+            }
+        } else {
+
+            LogUtil.e("雷达-列表播放  playIndex=" + playIndex);
+            if (tempPlayList != null && tempPlayList.size() > 0) {
+                if (isPlaying) {
+                    playOrPause();
+                } else {
+                    ischange = true;//切换中...
+                    isPlaying = true;
+                    starMusic(tempPlayList.get(playIndex).getPlayUrl());  //重新播放
+                }
+            } else {
+                LogUtil.e("雷达-未播放");
+            }
+
         }
 
     }
 
-//    public void setPlayMusicData(String js) {
-//        isDanBo = true;
-//        LogUtil.e("当前单个音频的信息==" + js);
-//        currPlayJson = js;
-//        details = gson.fromJson(js, Details.class);
-//        if (details != null) {
-//            prePlayId = details.getActiveItemId();
-//            runOnUiThread(new Runnable() {
-//                @Override
-//                public void run() {
-//                    tvContent.setText("" + details.getPlayTitle());//设置播放的标题
-//                }
-//            });
-//            //备份
-////                LogUtil.e("currPlayId=" + currPlayId + "    -prePlayId=" + prePlayId);
-////                if (prePlayId == currPlayId) {//id相等
-////                    LogUtil.e("id相等 不处理接着播放");
-////                    isPlaying = true;
-////                    //不处理接着播放
-////                } else {//id不相等
-////                    playIndex = 0;
-////                    LogUtil.e("id不相等 重新播放");
-////                    currPlayId = prePlayId;
-////                    tempPlayList.clear();
-////                    tempPlayList.add(details);
-////                    isPlaying = false;
-////
-////                }
-//
-//
-//            LogUtil.e("之前的Id=" + tempPlayList.get(playIndex).getActiveItemId() + "    -现在的prePlayId=" + prePlayId);
-//            if (prePlayId == tempPlayList.get(playIndex).getActiveItemId()) {//id相等
-//                LogUtil.e("id相等 不处理接着播放");
-//                isPlaying = true;
-//                //不处理接着播放
-//            } else {//id不相等
-//                //id不相等 ,再判断 id在不在列表中
-//                //在：playIndex=id所在的下表 ，isDanBo = false,ischange = true，isPlaying=false；
-//                // 不在: 执行上面的代码
-//                ischange = true;
-//                isPlaying = false;
-//                if (isInHomeList()) {
-//                    playIndex = tempIndex;
-//                    LogUtil.e("在列表中 playIndex=" + playIndex);
-//                    isDanBo = false;
-//                    isPlaying=false;
-//                } else {
-//                    LogUtil.e("不在列表中");
+    //initPlayUrl数据处理
+    public void initPlayUrlData(String json){
+        LogUtil.e("initPlayUrl");
+        isDanBo = true;
+        LogUtil.e("initPlayUrl=当前单个音频的信息==" + json);
+        currPlayJson = json;
+        details = gson.fromJson(json, Details.class);
+
+        if (details != null) {
+            prePlayId = details.getActiveItemId();
+            runOnUiThread(new Runnable() {
+                @Override
+                public void run() {
+                    tvContent.setText("" + details.getPlayTitle());//设置播放的标题
+                }
+            });
+
+
+            //备份
+//                LogUtil.e("currPlayId=" + currPlayId + "    -prePlayId=" + prePlayId);
+//                if (prePlayId == currPlayId) {//id相等
+//                    LogUtil.e("id相等 不处理接着播放");
+//                    isPlaying = true;
+//                    //不处理接着播放
+//                } else {//id不相等
 //                    playIndex = 0;
 //                    LogUtil.e("id不相等 重新播放");
+//                    currPlayId = prePlayId;
 //                    tempPlayList.clear();
 //                    tempPlayList.add(details);
+//                    isPlaying = false;
+//
 //                }
-//            }
-//        } else {
-//            LogUtil.e("单个音频获取失败");
-//        }
-//    }
+
+
+            //LogUtil.e("之前的Id=" + tempPlayList.get(playIndex).getActiveItemId() + "    -现在的prePlayId=" + prePlayId);
+            if (tempPlayList.size()>0&&prePlayId == tempPlayList.get(playIndex).getActiveItemId()) {//id相等
+                LogUtil.e("id相等 不处理接着播放");
+                isPlaying = true;
+                //不处理接着播放
+            } else {//id不相等
+                //id不相等 ,再判断 id在不在列表中
+                //在：playIndex=id所在的下表 ，isDanBo = false,ischange = true，isPlaying=false；
+                // 不在: 执行上面的代码
+                ischange = true;
+                isPlaying = false;
+                if (isInHomeList()) {
+                    playIndex = tempIndex;
+                    LogUtil.e("在列表中 playIndex=" + playIndex);
+                    isDanBo = false;
+
+                    //把旧的列表传回去
+                    sendListToPlayActinity();
+                } else {
+                    LogUtil.e("不在列表中");
+                    playIndex = 0;
+                    LogUtil.e("id不相等 重新播放");
+                    tempPlayList.clear();
+                    tempPlayList.add(details);
+                }
+            }
+        } else {
+            LogUtil.e("单个音频获取失败");
+        }
+
+
+    }
+
+    //包列表发到PlayAct
+    private void sendListToPlayActinity() {
+        Intent i = new Intent();
+        //吧零时播放列表传过去
+        i.putParcelableArrayListExtra("tempList", (ArrayList<? extends Parcelable>) tempPlayList);
+        i.setAction(Constants.In_The_List);
+        sendBroadcast(i);
+
+    }
+
 
     class playRecevier extends BroadcastReceiver {
 
@@ -1815,7 +1808,11 @@ public class MainActivity extends BaseActivity<Loginpresenter, LoginModel> imple
             String action = intent.getAction();
             if (action.equals(Constants.Play_Music)) {
                 LogUtil.d("Constants.Play_Music");
-                playOrPause();
+//                playOrPause();
+                //相当于调 audioToPlay
+                setAudioToPlay();
+
+
             } else if (action.equals(Constants.RE_Play_Music)) {
 //                //最后一个播放完再次点击播放按钮的处理，重新播放最后一个-=不用
 //                LogUtil.d("Constants.RE_Play_Music");
@@ -1881,11 +1878,10 @@ public class MainActivity extends BaseActivity<Loginpresenter, LoginModel> imple
                 wv.loadUrl(Constants.homeUrl);
 
             } else if (action.contains(Constants.onInitPlayUrl)) {
-                String js = SharePrefrenUtil.getInitPlayJson();
-                LogUtil.e("js------" + js);
-                if (TextUtils.isEmpty(js)) {
-                    //  setPlayMusicData(js);
-                }
+                String json = SharePrefrenUtil.getInitPlayJson();
+                //相当于initPlayUrl
+                LogUtil.e("传回的json------" + json);
+                initPlayUrlData(json);
             }
         }
     }
@@ -2183,6 +2179,7 @@ public class MainActivity extends BaseActivity<Loginpresenter, LoginModel> imple
         super.onResume();
         //设置雷达音乐的播放状态
 
+        LogUtil.e("----------");
         try {
             //setLeiDaH5State();
             setUIPlayState();

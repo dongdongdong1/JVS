@@ -24,9 +24,9 @@ import static com.umeng.socialize.utils.ContextUtil.getPackageName;
 public class Constants {
     //公共头
     //测试
-//    public static String commentUrl="http://test-m.jvtalking.com/";
+    public static String commentUrl="http://test-m.jvtalking.com/";
     //线上
-    public static String commentUrl="http://m.jvtalking.com/";
+//    public static String commentUrl="http://m.jvtalking.com/";
 
 
     //public static String commentUrl="http://192.168.2.100:9200/";
@@ -75,6 +75,10 @@ public class Constants {
     public  static String Pay_Suc="com.anction.paysuc";
     public static String Push_Info="com.action.push";
     public static String SeekBar_Complete="com.action.seekbar";
+    public static String In_The_List="com.action.in_the_list";
+
+
+
     public static String Channel_id="0";//渠道码
     //weixin
     public static String APP_ID="wxfd00fbba933ce018";

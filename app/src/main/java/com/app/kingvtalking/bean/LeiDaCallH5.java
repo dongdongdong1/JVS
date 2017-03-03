@@ -69,4 +69,9 @@ public class LeiDaCallH5 {
                 ", audioStatus='" + audioStatus + '\'' +
                 '}';
     }
+
+    public LeiDaCallH5(String fnName, String audioStatus) {
+        this.fnName = fnName;
+        this.audioStatus = audioStatus;
+    }
 }
