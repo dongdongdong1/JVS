@@ -1118,9 +1118,9 @@ public class PlayActivity extends BaseActivity {
         @JavascriptInterface
         public void initPlayUrl(String js) {//当前详情页 的内容信息
             LogUtil.e("PlayAct-返回详情内容==" + js);
-          Details details = gson.fromJson(js, Details.class);
-          tempPlayList.clear();
-            tempPlayList.add(details);
+            tempDetails = gson.fromJson(js, Details.class);
+//          tempPlayList.clear();
+//            tempPlayList.add(details);
             SharePrefrenUtil.setInitPlayJson(js);
             Intent intent = new Intent();
             intent.setAction(Constants.onInitPlayUrl);
@@ -1155,6 +1155,9 @@ public class PlayActivity extends BaseActivity {
 
     }
 
+    private Details tempDetails;
+
+
     public void playOrPause() {//控制栏播放按钮控制
         runOnUiThread(new Runnable() {
             @Override
@@ -1188,10 +1191,10 @@ public class PlayActivity extends BaseActivity {
                 sendBroadcast(intent);
                 ivPlay.setBackgroundResource(R.drawable.iv_stop);
                 //有问题 越界了
-               // tvContent.setText(""+tempPlayList.get(playIndex).getPlayTitle());
+
             }
         });
-        setH5PlayState();
+
     }
     public void pause() {//控制栏播放按钮控制
         runOnUiThread(new Runnable() {
@@ -1390,12 +1393,21 @@ public class PlayActivity extends BaseActivity {
         public void onReceive(Context context, Intent intent) {
             String action = intent.getAction();
             if (action.equals(Constants.Playing_Music)) {//播放中
+
+
+
                 //LogUtil.e("播放中...");
                 isPlaying = true;
                 int cur = intent.getIntExtra("current", 0);
                 total = intent.getIntExtra("total", 0);
                 playIndex = intent.getIntExtra("playIndex", 0);
-
+//                LogUtil.e("接playIndex=="+playIndex);
+                LogUtil.e("-----playIndex="+playIndex+"  size="+tempPlayList.size());
+                if (playIndex< tempPlayList.size()) {
+                    LogUtil.e("AAAAAAA-"+tempPlayList.get(playIndex).getPlayTitle());
+                    tvContent.setText(""+tempPlayList.get(playIndex).getPlayTitle());
+                }
+                setH5PlayState();
                 //缓存提示处理
                 if (cur == 0) {
                     cacheTV.setVisibility(View.VISIBLE);
@@ -1443,7 +1455,9 @@ public class PlayActivity extends BaseActivity {
                 webView.loadUrl("javascript:setAudioStatus('Pause')");
                 ivPlay.setBackgroundResource(R.drawable.iv_play);
             }else if (action.equals(Constants.In_The_List)) {
-
+                LogUtil.e("Constants.Have_Phone");
+                tempPlayList.clear();
+                tempPlayList.add(tempDetails);
             }
         }
     }

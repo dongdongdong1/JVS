@@ -1709,6 +1709,7 @@ public class MainActivity extends BaseActivity<Loginpresenter, LoginModel> imple
                 if (isPlaying) {
                     playOrPause();
                 } else {
+                    LogUtil.e("/重新开始播放");
                     ischange = true;//切换中...
                     isPlaying = true;
                     starMusic(tempPlayList.get(playIndex).getPlayUrl());  //重新播放
@@ -1772,15 +1773,16 @@ public class MainActivity extends BaseActivity<Loginpresenter, LoginModel> imple
                     LogUtil.e("在列表中 playIndex=" + playIndex);
                     isDanBo = false;
 
-                    //把旧的列表传回去
-                    sendListToPlayActinity();
                 } else {
                     LogUtil.e("不在列表中");
                     playIndex = 0;
                     LogUtil.e("id不相等 重新播放");
                     tempPlayList.clear();
                     tempPlayList.add(details);
+                    //把旧的列表传回去
+                    sendListToPlayActinity();
                 }
+
             }
         } else {
             LogUtil.e("单个音频获取失败");
@@ -1789,11 +1791,9 @@ public class MainActivity extends BaseActivity<Loginpresenter, LoginModel> imple
 
     }
 
-    //包列表发到PlayAct
+    //包列表发到PLayA
     private void sendListToPlayActinity() {
         Intent i = new Intent();
-        //吧零时播放列表传过去
-        i.putParcelableArrayListExtra("tempList", (ArrayList<? extends Parcelable>) tempPlayList);
         i.setAction(Constants.In_The_List);
         sendBroadcast(i);
 
@@ -1916,6 +1916,7 @@ public class MainActivity extends BaseActivity<Loginpresenter, LoginModel> imple
                     Intent i = new Intent();
                     i.putExtra("current", player.getCurrentPosition());
                     i.putExtra("total", player.getDuration());
+                   // LogUtil.e("sendBroadcast"+playIndex);
                     i.putExtra("playIndex", playIndex);//播放到第几个
                     i.setAction(Constants.Playing_Music);
                     sendBroadcast(i);
